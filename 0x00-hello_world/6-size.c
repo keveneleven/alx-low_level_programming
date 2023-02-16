@@ -10,5 +10,6 @@ int main(void)
 	long long int c;
 	char d;
 	float f; }
+	return (0);
 }
 
