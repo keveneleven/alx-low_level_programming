@@ -9,6 +9,6 @@ int main(void)
 	long int b;
 	long long int c;
 	char d;
-	float f;}
+	float f; }
 }
 
