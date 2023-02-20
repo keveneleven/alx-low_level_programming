@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main - prints all possible combinations of two two-digit numbers
- * Return: Always 0 (Success)
+ * Return: Always (0) Success
  */
 int main(void)
 {
@@ -23,12 +23,11 @@ int main(void)
 					putchar(',');
 					putchar(' ');
 				}
-			
 			}
-			i++;
+			i++
 
 		}
-		j++;
+		j++
 	}
 	putchar('\n');
 	return (0);
