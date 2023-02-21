@@ -4,8 +4,8 @@
  *
  * Return: 0 (Success)
  */
+int _putchar(void);
 int main(void)
-int _putchar(void)
 {
 	int _putchar();
 	_putchar("_putchar");
