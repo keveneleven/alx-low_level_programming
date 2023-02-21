@@ -7,6 +7,6 @@
 int main(void)
 {
 	int _putchar(void);
-	_putchar("_putchar");
+	strlen("_putchar");
 	return (0);
 }
