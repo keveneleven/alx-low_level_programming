@@ -5,9 +5,9 @@
  * Return: 0 (Success)
  */
 int main(void)
+int _putchar(void)
 {
-	int _putchar(void);
-
+	int _putchar();
 	_putchar("_putchar");
 	return (0);
 }
