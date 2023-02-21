@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	int _putchar(void);
-	strlen("_putchar");
+	int _putchar();
+	putchar("_putchar");
 	return (0);
 }
