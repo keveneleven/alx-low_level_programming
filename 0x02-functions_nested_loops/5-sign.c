@@ -2,7 +2,8 @@
 /**
  * print_sign - function that prints the sign of a number
  *
- * Return: 1, and prints + if n is greater than 0, 0, and prints 0 if n is 0, -1, and prints - if n is less than 0
+ * Return: 1 is greater than zero. 0 is zero
+ * -1 is less than zero
  * @n: number input
  */
 int print_sign(int n)
