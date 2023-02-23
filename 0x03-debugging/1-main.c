@@ -17,6 +17,7 @@ int main(void)
 	{
 		putchar(i);
 	}
+	printf("\\o/\n");
 
 	return (0);
 }
