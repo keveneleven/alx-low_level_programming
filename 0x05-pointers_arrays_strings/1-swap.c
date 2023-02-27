@@ -6,7 +6,9 @@
  */
 void swap_int(int *a, int *b)
 {
-	int a=98;
-	int b=42;
+	*a = 98;
+	*b = 42;
 	swap_int(&a, &b);
+	assert(a == 42);
+	assert(b == 98);
 }
