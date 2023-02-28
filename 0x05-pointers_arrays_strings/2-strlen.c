@@ -7,12 +7,9 @@
  */
 int _strlen(char *s)
 {
-	char *s[100];
-	int length;
+	int count = 0;
 
-	_putchar("Enter string to calculate its length\n");
-	length = strlen(*s);
-
-	_putchar("length of string = %d\n", length);
-	return (0);
+	while (*(s + count) != '\0');
+		count++;
+	return (count);
 }
