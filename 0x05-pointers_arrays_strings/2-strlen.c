@@ -5,12 +5,11 @@
  * Return: length of string
  * @s: input string
  */
-int _strlen(char *s)
+size_t _strlen(const char *str)
 {
-	int count = 0;
+	size_t length = 0;
 
-	while (*(s + count) != '\0'); {
-		count++;
-	}
-	return (count);
+	while (*str++)
+	length++;
+	return (length);
 }
