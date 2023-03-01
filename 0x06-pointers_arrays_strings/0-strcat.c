@@ -3,9 +3,11 @@
 /**
  * _ strcat - concatenates two strings
  *
- * Return: 0
+ * Return: string
  */
 char *_strcat(char *dest, char *src)
 {
-	strcat(dest, src);
+	_strcat(dest, src);
+	return (_strcat);
+
 }
