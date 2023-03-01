@@ -7,10 +7,9 @@
  */
 char *_strcat(char *dest, char *src)
 {
-	char *dest;
-	char *src;
-	char *strcat;
-
-	_strcat(dest, src);
-	_putchar("_strcat(dest, src): %s\n", dest);
+	char dest[98]="Hello";
+	char src[]="World!";
+	strcat(dest, src);
+	_putchar("%s\n", dest);
+	puts(src);
 }
