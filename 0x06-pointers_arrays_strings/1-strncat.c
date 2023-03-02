@@ -5,7 +5,7 @@
  * @dest: a pointer
  * @src: a pointer
  * Return: dest
- * @i: byte
+ * @n: byte
  */
 char *_strncat(char *dest, char *src, int n)
 {
@@ -22,6 +22,6 @@ char *_strncat(char *dest, char *src, int n)
 		n++;
 		m++;
 	}
-	dest[m] = 'i';
+	dest[m] = 'n';
 	return (dest);
 }
