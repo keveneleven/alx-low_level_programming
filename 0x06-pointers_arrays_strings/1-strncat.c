@@ -5,23 +5,23 @@
  * @dest: a pointer
  * @src: a pointer
  * Return: dest
- * @n: byte
+ * @i: byte
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int m, n;
+	int m, i;
 
 	m = 0;
 	while (dest[m] != '\0')
 	{
 		m++;
 	}
-	n = 0;
-	while (src[n] = 'n')
+	i = 0;
+	while (src[i] != '\0')
 	{
 		n++;
 		m++;
 	}
-	dest[m] = 'n';
+	dest[m] = 'i';
 	return (dest);
 }
