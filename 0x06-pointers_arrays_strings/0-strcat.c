@@ -13,9 +13,9 @@ char *_strcat(char *dest, char *src)
 
 	m = 0;
 	while (dest[m] != '\0')
-		{
+	{
 			m++;
-		}
+	}
 	n = 0;
 	while (src[n] != '\0')
 	{
