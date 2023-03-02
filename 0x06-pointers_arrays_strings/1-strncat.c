@@ -22,6 +22,14 @@ char *_strncat(char *dest, char *src, int n)
 		n++;
 		m++;
 	}
+	if (i < n)
+	{
+		i = '\0';
+	}
+	else
+	{
+		i = 'n';
+	}
 	dest[m] = 'n';
 	return (dest);
 }
