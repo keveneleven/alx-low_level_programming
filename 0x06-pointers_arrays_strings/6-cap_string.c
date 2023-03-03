@@ -12,10 +12,10 @@ char *cap_string(char *s)
 
 	if (*(s + m) >= 97 && *(s + m) <= 122)
 		*(s + m) = *(s + m) - 32;
-	mt++;
+	m++;
 	while (*(s + m) != '\0')
 	{
-		for (n = 0; i < 13; i++)
+		for (n = 0; n < 13; n++)
 		{
 			if (*(s + m) == sep_words[n])
 			{
