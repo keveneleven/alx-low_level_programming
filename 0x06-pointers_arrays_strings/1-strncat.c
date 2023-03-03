@@ -9,7 +9,8 @@
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int m, i;
+	int m = 0;
+	int i = 0;
 
 	m = 0;
 	while (*(dest + m) != '\0')
@@ -23,8 +24,8 @@ char *_strncat(char *dest, char *src, int n)
 
 		if (*(src + i) == '\0')
 			break;
-		i++;
 		m++;
+		i++;
 	}
 	return (dest);
 }
