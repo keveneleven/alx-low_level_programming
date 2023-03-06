@@ -13,6 +13,8 @@ char *_strchr(char *s, char c)
 	for (; *(s + m) != '\0'; m++)
 		if (*(s + m) == c)
 			return (s + m);
+	if (*(s + m) == c)
+		return (s + m);
 	if (*(s + m) != c)
 		return ('\0');
 
