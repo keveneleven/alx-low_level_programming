@@ -9,11 +9,12 @@
 unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int m = 0;
+	unsigned int n = 0;
 
 	for (; *(s + m) != '\0'; m++)
 		if (*(s + m) == *accept)
 			return (*(s + m));
 	if (*(s + m) == *accept)
 		return (*(s + m));
-	return (*accept);
+	return (n);
 }
