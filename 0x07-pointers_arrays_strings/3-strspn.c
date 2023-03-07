@@ -8,8 +8,8 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int m = 0;
-	unsigned int n = 0;
+	unsigned int m;
+	unsigned int n;
 
 	for (; *(s + m) != '\0'; m++)
 		if (*(s + m) == *accept)
