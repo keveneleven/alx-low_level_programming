@@ -1,7 +1,7 @@
 #include "main.h"
 #include <string.h>
 
-int actual_prime(int n, int m);
+int is_prime_number(int n, int m);
 /**
  * _is_prime_number - to see if an int is prime number or not
  * @n: number
@@ -20,11 +20,11 @@ int is_prime_number(int n)
  * Return: 1 if n a prime, 0 otherwise
  */
 
-int actual_prime(int n, int m)
+int is_prime_number(int n, int m)
 {
 	if (m == 1)
 		return (1);
 	if (n % m == 0 && m > 0)
 		return (0);
-	return (actual_prime(n, m - 1));
+	return (is_prime_number(n, m - 1));
 }
