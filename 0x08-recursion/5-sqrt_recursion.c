@@ -3,17 +3,20 @@
 /**
  * _sqrt_recursion - returns the natural square root of a number.
  * @n: int
+ * @m: iterate number
  * Return: If n does not have a natural square root, return -1
  */
-int _sqrt_recursion(int n)
+int _sqrt_recursion(int n, int m)
 {
-	if (n < 0)
+	int sqrt_recursion = m * m;
+
+	if (sqrt_recursion > n)
 	{
 		return (-1);
 	}
-	if (n == 0)
+	if (sqrt_recursion == n)
 	{
-		return (1);
+		return (m);
 	}
-		return (n * _sqrt_recursion(n, 0));
+	return (_sqrt_recursion(n, m + 1));
 }
