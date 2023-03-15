@@ -9,7 +9,9 @@
  */
 int main(int argc, char *argv[])
 {
-	int m, n, add = 0;
+	int m;
+	int n;
+	int add = 0;
 
 	for (m = 1; m < argc; m++)
 	{
@@ -17,7 +19,7 @@ int main(int argc, char *argv[])
 		{
 			if (!isdigit(argv[m][n]))
 			{
-				printf("error\n");
+				printf("Error\n");
 				return (1);
 			}
 		}
