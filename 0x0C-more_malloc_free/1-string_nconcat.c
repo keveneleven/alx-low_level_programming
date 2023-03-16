@@ -23,10 +23,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (b = 0; s2[b] != '\0'; b++)
 		;
 	lens2 = b;
-        if (n >= lens2)
-                b = lens2;
-        else
-                b = n;
+	if (n >= lens2)
+		b = lens2;
+	else
+		b = n;
 	p = malloc(sizeof(char) * (a + b + 1));
 	if (p == NULL)
 	{
