@@ -11,8 +11,10 @@ void *malloc_checked(unsigned int b)
 	unsigned int m;
 	int *i;
 
-	m =malloc(sizeof(i) * b)
-	if (malloc = NULL)
-		return (98);
-	return(0);
+	i = malloc(sizeof(int*) * b)
+	for (m = 0; int[m] != '\0'; m++)
+		;
+	if (!malloc)
+		exit(98);
+	return(i);
 }
