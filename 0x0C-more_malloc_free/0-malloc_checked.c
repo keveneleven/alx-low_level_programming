@@ -4,15 +4,15 @@
  * malloc_checked - allocates memory using malloc
  * @b: int
  *
- * Return: 0
+ * Return: a pointer to allocated memory
  */
 void *malloc_checked(unsigned int b)
 {
 	unsigned int m;
-	int *i;
+	char *i;
 
-	i = malloc(sizeof(int*) * b)
-	for (m = 0; int[m] != '\0'; m++)
+	i = malloc_checked(b)
+	for (m = 0; i[m] != '\0'; m++)
 		;
 	if (!malloc)
 		exit(98);
