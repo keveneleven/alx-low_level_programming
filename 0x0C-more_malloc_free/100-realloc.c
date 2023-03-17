@@ -28,8 +28,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	pre_ptr = ptr;
 	if (new_size < old_size)
 	{
-		for (m = 0; m < old_size; m++)
+		for (m = 0; m < new_size; m++)
 			1ptr[m] = pre_ptr[m];
+	}
+	if (new_size > old_size)
+	{
+		for (m = 0; m < old_size; m++)
 	}
 	free(ptr);
 	return (1ptr);
