@@ -1,106 +1,127 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
 
-#define ERR_MSG "Error"
 /**
- * isdigit - checks if a string 
- * non-digit char
- * @s: string to be evaluated
- * Return: 0 if non-digit is foud
- * 1 otherwise
+ * _is_zero - determines if any number is zero
+ * @argv: argument vector.
+ *
+ * Return: no return.
  */
-int is_digit(char *s)
+void _is_zero(char *argv[])
 {
-	int m = 0;
+	int i, isn1 = 1, isn2 = 1;
 
-	while (s[m])
+	for (i = 0; argv[1][i]; i++)
+		if (argv[1][i] != '0')
+		{
+			isn1 = 0;
+			break;
+		}
+
+	for (i = 0; argv[2][i]; i++)
+		if (argv[2][i] != '0')
+		{
+			isn2 = 0;
+			break;
+		}
+
+	if (isn1 == 1 || isn2 == 1)
 	{
-		if (s[m] < '0' || s[m] > '9')
-			return (0);
-		m++;
+		printf("0\n");
+		exit(0);
 	}
-	return (1);
 }
-/**
- * _strlen - returns length of string
- * @s: string
- * Return: length of string
- */
-int _strlen(char *s)
-{
-	int m = 0;
 
-	while (s[m] != '\0')
-	{
-		m++;
-	}
-	return (m);
-}
 /**
- * errors - handles errors
+ * _initialize_array - set memery to zero in a new array
+ * @ar: char array.
+ * @lar: length of the char array.
+ *
+ * Return: pointer of a char array.
  */
-void errors(void)
+char *_initialize_array(char *ar, int lar)
 {
-	printf("Error\n");
-	exit(98);
+	int i = 0;
+
+	for (i = 0; i < lar; i++)
+		ar[i] = '0';
+	ar[lar] = '\0';
+	return (ar);
 }
+
 /**
- * main - multiplies two positive 
- * numbers
- * @argc: num of arguments
- * @argv: array of arguments
- * Return: 0 (success)
+ * _checknum - determines length of the number
+ * and checks if number is in base 10.
+ * @argv: arguments vector.
+ * @n: row of the array.
+ *
+ * Return: length of the number.
+ */
+int _checknum(char *argv[], int n)
+{
+	int ln;
+
+	for (ln = 0; argv[n][ln]; ln++)
+		if (!isdigit(argv[n][ln]))
+		{
+			printf("Error\n");
+			exit(98);
+		}
+
+	return (ln);
+}
+
+/**
+ * main - Entry point.
+ * program that multiplies two positive numbers.
+ * @argc: number of arguments.
+ * @argv: arguments vector.
+ *
+ * Return: 0 - success.
  */
 int main(int argc, char *argv[])
 {
-	char *s1;
-	char s2;
-	int len, 1len, 2len = 0;
-	int m, a = 0;
-	int carry, *result = 0;
-	int 1digit, 2digit = 0;
+	int ln1, ln2, lnout, add, addl, i, j, k, ca;
+	char *nout;
 
-	s1 = argv[1], s2 = argv[2];
-	
-	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
-			errors();
-	1len = _strlen(s1);
-	2len = _strlen(s2);
-	len = 1len + 2len + 1;
-	result = malloc(sizeof(int) * len);
-
-	if (!result)
-		return (1);
-	for (m = 0; m <= 1len + 2len; m++)
-		result[m] = 0;
-	for (llen = 1len - 1; 1len >= 0; 1len--)
+	if (argc != 3)
+		printf("Error\n"), exit(98);
+	ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
+	_is_zero(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
+	if (nout == NULL)
+		printf("Error\n"), exit(98);
+	nout = _initialize_array(nout, lnout);
+	k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
+	for (; k >= 0; k--, i--)
+	{
+		if (i < 0)
 		{
-			1digit = s1[1len] - '0';
-			carry = 0;
-		
-		for (2len = _strlen(s2) - 1; 2len >= 0; 2len--)
+			if (addl > 0)
 			{
-				2digit = s2[2len] - '0';
-				carry += result[1len + 2len + 1] + (1digit * 2digit);
-				result[1len + 2len + 1] = carry % 10;
-				carry /= 10;
+				add = (nout[k] - '0') + addl;
+				if (add > 9)
+					nout[k - 1] = (add / 10) + '0';
+				nout[k] = (add % 10) + '0';
 			}
-			
-		if (carry > 0)
-		result[1len + 2len + 1] += carry;
+			i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
 		}
-	for (m = 0; m < len - 1; m++)
+		if (j < 0)
 		{
-			if (result[m])
-				a = 1;
-			if (a)
-				_putchar(result[m] + '0');
+			if (nout[0] != '0')
+				break;
+			lnout--;
+			free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
+			k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
 		}
-	if (!a)
-		_putchar('0');
-	_putchar('\n');
-	free(result);
+		if (j >= 0)
+		{
+			add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
+			addl = add / 10, nout[k] = (add % 10) + '0';
+		}
+	}
+	printf("%s\n", nout);
 	return (0);
 }
 	
