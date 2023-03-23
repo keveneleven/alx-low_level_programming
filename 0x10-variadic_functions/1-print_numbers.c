@@ -3,7 +3,7 @@
 
 /**
  * print_numbers - prints numbers
- * separator - string to be printed
+ * @separator - string to be printed
  * @n: number of integers
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
@@ -18,4 +18,4 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		printf("%s", separator);
 	printf("\n");
 	va_end(ap);
-}		
+}
