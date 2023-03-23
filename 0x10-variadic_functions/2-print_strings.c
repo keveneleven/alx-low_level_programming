@@ -1,8 +1,8 @@
-#include "variadic_ functions.h"
+#include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
 /**
- * print_strings - prints strings 
+ * print_strings - prints strings
  * @separator: string to be printed between strings
  * @n: number of integers
  */
