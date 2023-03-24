@@ -22,10 +22,11 @@ void print_all(const char * const format, ...)
 					printf("%s%c", s, va_arg(lists, int));
 					break;
 				case 'i':
-					prinf("%s%i", s, va_arg(lists, int));
+					printf("%s%d", s, va_arg(lists, int));
 					break;
 				case 'f':
 					printf("%s%f", s, va_arg(lists, double));
+					break;
 				case 's':
 					str = va_arg(lists, char *);
 					if (!str)
