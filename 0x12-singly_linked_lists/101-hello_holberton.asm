@@ -1,17 +1,12 @@
-global main
+global 	main
+	extern 	printf
 
-extern printf
-
-section .data
-	message db 'Hello, Holberton', 10, 0
-
-section .text
+	section .text
 main:
-	lea rdi, [rel message]
-	xor rax, rax
-	call printf
-
-	xor rdi, rdi
-	mov rax, 60
-	syscall
-
+	mov	rdi, format
+	mov	rax, 0
+	call	printf
+	mov	rax, 0
+	ret
+format:
+	db "Hello, Holberton", 10, 0
