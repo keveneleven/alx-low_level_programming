@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 /**
- * free_listint -  function that frees a list.
+ * free_listint - frees a list.
  * @head: singly linked list
  * Return: no return
  */
@@ -13,6 +13,6 @@ void free_listint(listint_t *head)
 	{
 		temp = head;
 		head = head->next;
-		free(head);
+		free(temp);
 	}
 }
