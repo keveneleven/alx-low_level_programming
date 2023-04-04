@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdio.h>
 /**
- * add_nodeint_end - function that adds a new node at the end of a list
+ * add_nodeint_end - adds a new node
  * @head: linked list
  * @n: integer
  * Return: number of elements
@@ -17,13 +17,14 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	new_node->next = NULL;
 	temp = *head;
 	if (temp == NULL)
+	{
 		*head = new_node;
+	}
 	else
 	{
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new_node;
-		
 	}
 	return (*head);
 }
