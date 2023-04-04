@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 /**
- * insert_nodeint_at_index - inserts a new node 
+ * insert_nodeint_at_index - inserts a new node
  * at given position
  * @head: singly linked list
  * @idx: index of list
@@ -11,39 +11,32 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *new_node, *prev_node;
-	unsigned int m;
+	listint_t *node, *new_node;
+	unsigned int index;
 
-	if (head == NULL)
-		return NULL;
-
-	*new_node = malloc(sizeof(listint_t));
+	node = *head;
+	if (idx != 0)
+	{
+		for (index = 0; index < idx - 1 && node != NULL; index++)
+		{
+			node = node->next;
+		}
+	}
+	if (node == NULL && idx != 0)
+		return (NULL);
+	new_node = malloc(sizeof(listint_t));
 	if (new_node == NULL)
-		return NULL;
+		return (NULL);
 	new_node->n = n;
 	if (idx == 0)
 	{
 		new_node->next = *head;
 		*head = new_node;
-		return new_node;
 	}
-	*prev_node = *head;
-       	for (unsigned int m = 0; m < idx - 1; m++)
+	else
 	{
-		if (prev_node == NULL)
-		{
-			free(new_node);
-			return NULL;
-		}
-		prev_node = prev_node->next;
+		new_node->next = node->next;
+		node->next = new_node;
 	}
-	if (prev_node == NULL || prev_node->next == NULL)
-	{
-		free(new_node);
-		return NULL;
-	}
-	*next_node = prev_node->next;
-	prev_node->next = new_node;
-	new_node->next = next_node;
-	return (*new_node);
+	return (new_node);
 }
