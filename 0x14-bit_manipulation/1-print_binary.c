@@ -11,6 +11,12 @@ void print_binary(unsigned long int n)
 
 	count = 1UL << (sizeof(unsigned long int) * 8 - 1);
 
+	if (!n)
+	{
+		_putchar('0');
+		return;
+	}
+
 	while ((count & n) == 0 && count > 0)
 	{
 		count >>= 1;
