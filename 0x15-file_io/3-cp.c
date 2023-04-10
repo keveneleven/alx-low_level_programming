@@ -2,73 +2,73 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdarg.h>
 
-#define BUFFER_SIZE 1024
+#define BUF_SIZE 1024
 
 /**
- * print_error_and_exit - prints error message
- * @code: message
- * @format: formatting
- * * Return: exit
+ * handle_file - handles errors
+ * @fd1: file descriptor 1
+ * @fd2: file descriptor 2
+ * Return: exit
  */
-void print_error_and_exit(int code, char *format, ...)
+void handle_file(int fd1, int fd2)
 {
-	va_list args;
-
-	va_start(args, format);
-	dprintf(STDERR_FILENO, format, args);
-	va_end(args);
-	exit(code);
+	if (close(fd1) < 0)
+	{
+		perror("Error: Can't close the file 1");
+		exit(100);
+	}
+	if (close(fd2) < 0)
+	{
+		perror("Error: Can't close the file 2");
+		exit(100);
+	}
 }
 
 /**
  * main - entry point
- * @argc: statement
- * @argv: argument
+ * @argc: argument count
+ * @argv: arguement variable
  * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	int m_1, m_2;
-	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read, bytes_written;
-	char *file_from = argv[1];
-	char *file_to = argv[2];
+	ssize_t n_read;
+	char buf[BUF_SIZE];
+	int dest_fd, source_fd;
 
 	if (argc != 3)
 	{
-		print_error_and_exit(97, "Usage: cp file_from file_to\n");
+		fprintf(stderr, "Usage: %s  <source_file> <destination_file>\n", argv[0]);
+		exit(97);
 	}
-	m_1 = open(file_from, O_RDONLY);
-	if (m_1 == -1)
+	source_fd = open(argv[1], O_RDONLY);
+	if (source_fd < 0)
 	{
-		print_error_and_exit(98, "Error: Can't read from file %s\n", file_from);
+		perror("Error: Can;t read from file");
+		exit(98);
 	}
-	m_2 = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (m_2 == -1)
+	dest_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	if (dest_fd < 0)
 	{
-		print_error_and_exit(99, "Error: Can't write to file %s\n", file_to);
+		perror("Error: Can't write to file");
+		exit(99);
 	}
-	while ((bytes_read = read(m_1, buffer, BUFFER_SIZE)) > 0)
+	while ((n_read = read(source_fd, buf, BUF_SIZE)) > 0)
 	{
-		bytes_written = write(m_2, buffer, bytes_read);
-		if (bytes_written == -1 || bytes_written != bytes_read)
+		if (write(dest_fd, buf, n_read) != n_read)
 		{
-			print_error_and_exit(100, "Error: Can't write to file %s\n", file_to);
+			handle_file(source_fd, dest_fd);
+			perror("Error: Can't write to file");
+			exit(99);
 		}
 	}
-	if (bytes_read == -1)
+	if (n_read < 0)
 	{
-		print_error_and_exit(101, "Error: Can't read from file %s\n", file_from);
+		handle_file(source_fd, dest_fd);
+		perror("Error: Can't read from file");
+		exit(98);
 	}
-	if (close(m_1) == -1)
-	{
-		print_error_and_exit(102, "Error: Can't close file %s\n", file_from);
-	}
-	if (close(m_2) == -1)
-	{
-		print_error_and_exit(103, "Error: Can't close file %s\n", file_to);
-	}
+	handle_file(source_fd, dest_fd);
 	return (0);
 }
