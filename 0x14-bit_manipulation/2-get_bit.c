@@ -14,6 +14,6 @@ int get_bit(unsigned long int n, unsigned int index)
 	{
 		return (-1);
 	}
-    container = 1UL << index;
-    return ((n & container) ? 1 : 0);
+	container = 1UL << index;
+	return ((n & container) ? 1 : 0);
 }
