@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * get_endianess - checks the endianness
+ * get_endianness - checks the endianness
  * Return: 0
  */
 int get_endianness(void)
