@@ -15,5 +15,5 @@ void print_binary(unsigned long int n)
 		putchar((n & index) ? '1' : '0');
 		index >>= 1;
 	}
-	putchar('\n');
+	_putchar('\n');
 }
