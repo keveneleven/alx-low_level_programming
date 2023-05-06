@@ -11,7 +11,7 @@ void print_binary(unsigned long int n)
 
 	for (m = 0ul; m < sizeof(unsigned long int) * 8ul; m++)
 	{
-		putchar((n & index) ? '1' : '0');
+		_putchar((n & index) ? '1' : '0');
 		index >>= 1;
 	}
 	_putchar('\n');
