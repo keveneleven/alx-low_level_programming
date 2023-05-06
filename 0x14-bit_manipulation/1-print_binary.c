@@ -9,8 +9,8 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int index = 1ul << (sizeof(unsigned long int) * 8 - 1);
-	int m;
-	
+	unsigned long int m;
+
 	for (m = 0; m < sizeof(unsigned long int) * 8; m++)
 	{
 		putchar((n & index) ? '1' : '0');
