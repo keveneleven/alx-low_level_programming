@@ -5,13 +5,8 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int index = 1ul << (sizeof(unsigned long int) * 8 - 1);
-	unsigned long int m;
+	if (num > 1)
+		print_binary(num >> 1);
 
-	for (m = 0ul; m < sizeof(unsigned long int) * 8ul; m++)
-	{
-		_putchar((n & index) ? '1' : '0');
-		index >>= 1;
-	}
-	_putchar('\n');
+	_putchar((num & 1) + '0');
 }
