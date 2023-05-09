@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 /**
  * create_file - creates a file
  * @filename: name of file to create
@@ -22,7 +23,7 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 	{
 		file_len = strlen(text_content);
-		if (write(file_form, text_content, file_ len) != file_len)
+		if (write(file_form, text_content, file_len) != file_len)
 		{
 			close(file_form);
 			return (-1);
