@@ -50,8 +50,10 @@ void copy_file(const char *src_path, const char *dest_pt)
 	}
 	err_close = close(dest_fd);
 	if (err_close == -1)
+	{
 		fprintf(stderr, "Error: Can't close fd %d\n", dest_fd);
 		exit(100);
+	}
 }
 /**
  * main - check code
